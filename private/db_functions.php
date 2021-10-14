@@ -1,23 +1,23 @@
 <?php
-
-// function db_connect() {
-//     try {
-//         $connection = new PDO('mysql:host='.DB_SERVER.'; dbname='.DB_NAME, DB_USER, DB_PASS); 
-//         return $connection;
-//     }
-    
-//     catch(Exception $e) {
-//         echo $e->getMessage();
-//     }
-// }
-
-//from my first file
+ 
+// /**
+//  * connects to the DB
+//  *
+//  * @returns {string} the DB connection
+//  */
 function db_connect() {
-$connection = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-confirm_db_connect($connection);
-return $connection;
+    $connection = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    confirm_db_connect($connection);
+    return $connection;
 }
 
+/**
+ * Error checking on the DB connection
+ *
+ * @param {string} $connection the DB connection
+ *
+ * @returns {void}
+ */
 function confirm_db_connect($connection) {
     if($connection->connect_errno){
         $msg = "Database connection failed: ";
@@ -27,6 +27,13 @@ function confirm_db_connect($connection) {
     }
 }
 
+/**
+ * disconnects from the DB
+ *
+ * @param {string} $connection DB connection
+ *
+ * @returns {void}
+ */
 function db_disconnect($connection){
     if(isset($connection)) {
         $connection->close();

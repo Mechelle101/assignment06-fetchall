@@ -37,10 +37,8 @@
   }
   spl_autoload_register('my_autoload');
 
-  $database = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-
    //creating a db connection
-   //$database = db_connect();
-   //Bird::set_database($database);
+   $database = db_connect();
+   Bird::set_database($database);
 
 ?>
